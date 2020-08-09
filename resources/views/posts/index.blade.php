@@ -12,7 +12,7 @@
             <thead>
                 <th>Image</th>
                 <th>Title</th>
-                <th>Actions</th>
+                <th colspan="2">Actions</th>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
@@ -21,7 +21,13 @@
                         <td>{{ $post->title }}</td>
                         <td>
                             <a href="" class="btn btn-info btn-sm">Edit</a>
-                            <a href="" class="btn btn-danger btn-sm">Trash</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" href="" class="btn btn-danger btn-sm">Trash</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
