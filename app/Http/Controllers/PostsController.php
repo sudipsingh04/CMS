@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Posts\CreatePostRequest;
 
 class PostsController extends Controller
@@ -96,10 +97,15 @@ class PostsController extends Controller
         $post = Post::withTrashed()->whereId($id)->firstOrFail();
 
         if ($post->trashed()) {
+
+            Storage::delete($post->image);
+
             $post->forceDelete();
+
             session()->flash('success', 'Post deleted successfully');
         }else{
             $post->delete();
+
             session()->flash('success', 'Post trashed successfully');
         }
 
