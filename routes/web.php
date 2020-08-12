@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('blog/posts/{post}', 'Blog\PostsController@show')->name('blog.show');
 
 Auth::routes();
 
