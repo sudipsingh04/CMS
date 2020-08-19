@@ -2,6 +2,8 @@
 
 This is a cms blog built with [Laravel](https://laravel.com/).
 
+Live url : (http://sudip-cms.herokuapp.com/)
+
 ## Usage
 
 1. Clone this repository
